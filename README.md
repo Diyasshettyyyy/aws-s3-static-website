@@ -2,10 +2,6 @@
 
 Practical activity for the Self-Learning Report on **AWS Cloud Practitioner Essentials**.
 
-**Name:** Diya S Shetty
-**USN:** 4SF23CS060
-**Institution:** Sahyadri College of Engineering & Management, Mangaluru
-**Department:** Computer Science and Engineering
 
 ## Problem Statement
 To host a static website on the AWS Cloud using Amazon S3 and understand how core AWS services are configured through the AWS Management Console.
