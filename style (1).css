@@ -1,0 +1,117 @@
+/* Formal black-and-white theme */
+:root {
+  --ink: #111111;
+  --muted: #555555;
+  --line: #cfcfcf;
+  --band: #1f1f1f;
+  --soft: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+header {
+  background: var(--band);
+  color: #ffffff;
+  text-align: center;
+  padding: 48px 20px 40px;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #dddddd;
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 20px;
+}
+
+section {
+  margin-bottom: 36px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--ink);
+}
+
+p { margin: 0 0 12px; text-align: justify; }
+
+ul { margin: 0; padding-left: 24px; }
+li { margin-bottom: 8px; text-align: justify; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  text-align: left;
+}
+
+th {
+  background: var(--band);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+tr:nth-child(even) td { background: var(--soft); }
+
+td:first-child, th:first-child { width: 60px; text-align: center; }
+td:last-child, th:last-child { width: 130px; }
+
+a { color: var(--ink); text-decoration: underline; }
+a:hover { text-decoration: none; }
+
+footer {
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* Error page */
+header + main section p { text-align: center; }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  header { padding: 32px 16px 28px; }
+  header h1 { font-size: 1.5rem; }
+  th, td { padding: 8px 8px; }
+  td:last-child, th:last-child { width: 95px; }
+}
+
+@media print {
+  header { background: #ffffff; color: #000000; border-bottom: 2px solid #000000; }
+  header p { color: #000000; }
+  th { background: #ffffff; color: #000000; }
+  tr:nth-child(even) td { background: #ffffff; }
+}
