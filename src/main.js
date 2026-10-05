@@ -1,0 +1,15 @@
+﻿const events=[
+['Golden Hour Sessions','Music','OCT 12 · 6:30 PM','Riverside Park','Brooklyn, NY','$28','SELLING FAST','photo-1470229722913-7c0e2dbbafd3'],
+['The Sunday Market','Food & drink','OCT 13 · 10:00 AM','The Foundry','Queens, NY','Free','LOCAL FAVORITE','photo-1441986300917-64674bd600d8'],
+['Clay After Dark','Art & culture','OCT 16 · 7:00 PM','Morrow Studio','Manhattan, NY','$42','FEW SPOTS LEFT','photo-1565193298595-6c52c4a08430'],
+['Rooftop Cinema Club','Film','OCT 18 · 8:00 PM','Elsewhere Rooftop','Brooklyn, NY','$18','THIS WEEK','photo-1489599849927-2ee91cede3ba'],
+['Run Club, No Club','Wellness','OCT 19 · 8:30 AM','McCarren Park','Brooklyn, NY','Free','ALL LEVELS','photo-1530549387789-4c1017266635'],
+['Jazz in the Courtyard','Music','OCT 20 · 5:00 PM','Wythe Hotel','Brooklyn, NY','$35','NEW','photo-1511192336575-5a79af67a629']
+];const cats=['All events','Music','Food & drink','Art & culture','Film','Wellness'];let cat=cats[0],saved=[],savedMode=false;
+const f=document.querySelector('#filters');f.innerHTML=cats.map((x,i)=>'<button class="pill '+(!i?'active':'')+'" data-cat="'+x+'">'+x+'</button>').join('');
+f.onclick=e=>{if(e.target.dataset.cat){cat=e.target.dataset.cat;f.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));render()}};
+document.querySelector('#query').oninput=render;document.querySelector('#city').onchange=render;
+window.showSaved=()=>{savedMode=!savedMode;render();document.querySelector('#discover').scrollIntoView({behavior:'smooth'})};
+window.allEvents=()=>{savedMode=false;cat=cats[0];document.querySelector('#query').value='';f.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));render()};
+window.toggleSaved=id=>{saved=saved.includes(id)?saved.filter(x=>x!==id):saved.concat(id);document.querySelector('#saved-count').textContent=saved.length;render()};
+function render(){const q=document.querySelector('#query').value.toLowerCase();let list=events.filter(e=>(cat===cats[0]||e[1]===cat)&&(!savedMode||saved.includes(events.indexOf(e)))&&(!q||e.join(' ').toLowerCase().includes(q)));document.querySelector('#count').textContent=list.length+' EVENTS FOUND ↗';document.querySelector('#events').innerHTML=list.length?list.map(e=>{let id=events.indexOf(e);return '<article class="card"><div class="photo"><img src="https://images.unsplash.com/'+e[7]+'?auto=format&fit=crop&w=800&q=85"><label>'+e[6]+'</label><button class="heart '+(saved.includes(id)?'selected':'')+'" onclick="toggleSaved('+id+')">'+(saved.includes(id)?'♥':'♡')+'</button><span>'+e[1]+'</span></div><small class="date">'+e[2]+'</small><h3>'+e[0]+' <button class="arrow" onclick="alert(\'Tickets coming soon!\')">↗</button></h3><p class="place">⌖ &nbsp;'+e[3]+' · '+e[4]+'</p><div class="price">'+e[5]+'<button onclick="alert(\'Tickets coming soon!\')">Get tickets →</button></div></article>'}).join(''):'<div class="empty"><h3>Nothing here just yet.</h3><p>Try another search or explore all events.</p></div>'}window.render=render;render();

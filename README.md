@@ -1,37 +1,21 @@
-# AWS S3 Static Website
+﻿# EventHub
 
-Practical activity for the Self-Learning Report on **AWS Cloud Practitioner Essentials**.
+A responsive event discovery frontend built with Vite. It includes event search and categories, saved events, a newsletter form, and event organizer sections.
 
+## Run locally
 
-## Problem Statement
-To host a static website on the AWS Cloud using Amazon S3 and understand how core AWS services are configured through the AWS Management Console.
+```sh
+npm ci
+npm run dev
+```
 
-## Files
-| File | Description |
-|------|-------------|
-| `index.html` | Home page of the website |
-| `error.html` | Error document shown for missing pages |
-| `style.css` | Stylesheet |
-| `bucket-policy.json` | Bucket policy allowing public read access |
-| `screenshots/` | Screenshots of the AWS Console steps and the hosted website |
+## Build for Amazon S3
 
-## Steps
-1. Sign in to the AWS Management Console and open Amazon S3.
-2. Create a bucket with a globally unique name in the chosen Region.
-3. Upload `index.html`, `error.html`, and `style.css`.
-4. Under **Properties**, enable **Static website hosting** and set `index.html` as the index document and `error.html` as the error document.
-5. Under **Permissions**, turn off **Block all public access**.
-6. Add `bucket-policy.json` as the bucket policy (replace `YOUR-BUCKET-NAME` with the bucket name).
-7. Open the **bucket website endpoint** shown under Static website hosting to view the site.
+```sh
+npm ci
+npm run build
+```
 
-## Result
-The website is served directly from Amazon S3 without managing any server.
+Upload the contents of `dist/` to the root of an S3 bucket configured for static website hosting. Set `index.html` as the index document. The site uses remote Unsplash images and Google Fonts.
 
-Website endpoint: `[paste your S3 website endpoint here]`
-
-## Technologies
-Amazon S3, AWS Management Console, HTML, CSS
-
-## Reference
-- AWS Documentation: Hosting a static website using Amazon S3 (docs.aws.amazon.com)
-- AWS Training and Certification: AWS Cloud Practitioner Essentials
+The event list and signup form are demo interactions; connect a backend before using them for real bookings or email subscriptions.
